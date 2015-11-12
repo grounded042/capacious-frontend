@@ -1,0 +1,58 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?hngbl');
+	src:url('../fonts/icomoon.eot?hngbl#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?hngbl') format('truetype'),
+		url('../fonts/icomoon.woff?hngbl') format('woff'),
+		url('../fonts/icomoon.svg?hngbl#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mode_edit:before {
+	content: "\e0ee";
+}
+.icon-search:before {
+	content: "\e036";
+}
+.icon-marquee:before {
+	content: "\e082";
+}
+.icon-marquee-plus:before {
+	content: "\e083";
+}
+.icon-marquee-minus:before {
+	content: "\e084";
+}
+.icon-check:before {
+	content: "\e116";
+}
+.icon-cross:before {
+	content: "\e117";
+}
+.icon-menu:before {
+	content: "\e120";
+}
+.icon-write:before {
+	content: "\e900";
+}
+.icon-pencil:before {
+	content: "\f040";
+}
+.icon-angle-down:before {
+	content: "\f107";
+}

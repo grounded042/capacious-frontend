@@ -1,0 +1,223 @@
+<!doctype html>
+
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<title>Title</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	<ui-view class="content"></ui-view>
+	<!-- <div class="content">
+		<div class="screen prev-all screen-1 cmpt-intro">
+			<h1>Frontline Christmas Party</h1>
+			<h5>December 14th at 6:30pm</h5>
+			<h4>The Sheraton Valley Forge, King of Prussia PA</h4>
+			<p>Hello Tory, you’ve been invited to the Frontline Christmas party! Please fill out the requested information so we can meet your needs.</p>
+
+			<div class="cmpt-button">
+				<button class="primary">Get Started!</button>
+			</div>
+		</div>
+
+		<div class="screen prev-all screen-2 cmpt-spouse grid">
+			<h2>Will your spouse/significant other be attending?</h2>
+
+			<div class="form-group horizontal">
+				<label>Please choose one</label>
+				<button>Yes</button>
+				<button>No</button>
+			</div>
+
+			<div class="form-group horizontal margin-left border-top-mobile">
+				<label>Spouse's first name</label>
+				<input type="text" />
+			</div>
+
+			<div class="form-group horizontal">
+				<label>Spouse's last name</label>
+				<input type="text" value="Martin" />
+			</div>
+
+			<div class="cmpt-button">
+				<button>Back</button>
+				<button class="primary" disabled="true">Save & Continue</button>
+			</div>
+		</div>
+
+		<div class="screen prev-all screen-3 cmpt-food">
+			<h2>Please select your food choices.</h2>
+
+			<div class="grid">
+				<div class="unit half">
+					<h4>Tory</h4>
+
+					<div class="form-group vertical">
+						<label>Please choose your entreé</label>
+						<div class="select-container">
+							<select>
+								<option>Option 1</option>
+								<option>Option 2</option>
+							</select>
+							<span class="icon-angle-down"></span>
+						</div>
+					</div>
+
+					<div class="form-group vertical">
+						<label>Please choose your dessert</label>
+						<div class="select-container">
+							<select>
+								<option>Option 1</option>
+								<option>Option 2</option>
+							</select>
+							<span class="icon-angle-down"></span>
+						</div>
+					</div>
+
+					<div class="form-group vertical">
+						<label>Dietary Notes</label>
+						<textarea placeholder="Add notes here"></textarea>
+					</div>
+				</div>
+
+				<div class="unit half">
+					<h4 class="border-top-mobile">Brittany</h4>
+
+					<div class="form-group vertical">
+						<label>Please choose your entreé</label>
+						<div class="select-container">
+							<select>
+								<option>Option 1</option>
+								<option>Option 2</option>
+							</select>
+							<span class="icon-angle-down"></span>
+						</div>
+					</div>
+
+					<div class="form-group vertical">
+						<label>Please choose your dessert</label>
+						<div class="select-container">
+							<select>
+								<option>Option 1</option>
+								<option>Option 2</option>
+							</select>
+							<span class="icon-angle-down"></span>
+						</div>
+					</div>
+
+					<div class="form-group vertical">
+						<label>Dietary Notes</label>
+						<textarea placeholder="Add notes here"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="cmpt-button">
+				<button>Back</button>
+				<button class="primary">Save & Continue</button>
+			</div>
+		</div>
+
+		<div class="screen active screen-4 cmpt-seating">
+			<h2>Would you like to be seated with anyone?</h2>
+
+			<h5>You may select up to 5 people. However, depending on other requests, you may not recieve all of your choices, but we will try to match as many as we can.</h5>
+
+			<label>Start typing to search for other attendees</label>
+
+			<div class="grid">
+				<div class="search unit half">
+					<span class="icon-search"></span>
+					<input type="text" class="search-input" placeholder="Search" />
+				</div>
+
+				<div class="attendee-labels unit half">
+					<span class="attendee-label">Jon Carl</span>
+					<span class="attendee-label">Hannah Stanley</span>
+					<span class="attendee-label">Josh Smith</span>
+					<span class="attendee-label">Greg Melrath</span>
+					<span class="attendee-label">Jon Eckert</span>
+				</div>
+			</div>
+
+
+			<div class="cmpt-button">
+				<button>Back</button>
+				<button class="primary">Save & Continue</button>
+			</div>
+		</div>
+
+		<div class="screen prev-all screen-5 cmpt-verify">
+			<h2>Please verify your information</h2>
+
+			<div class="grid">
+				<div class="unit half">
+					<h4>Tory Martin</h4>
+
+					<label class="margin-top">Entreé</label>
+					<h5>Chicken Parmesan & Mashed Potatoes</h5>
+
+					<label>Dessert</label>
+					<h5>Raspberry Cheesecake</h5>
+
+					<label class="border-top no-border-mobile">Notes</label>
+					<h5>No Dietary Notes</h5>
+				</div>
+
+				<div class="unit half">
+					<h4 class="border-top-mobile">Brit Denae</h4>
+
+					<label class="margin-top">Entreé</label>
+					<h5>Chicken Parmesan & Mashed Potatoes</h5>
+
+					<label>Dessert</label>
+					<h5>Raspberry Cheesecake</h5>
+
+					<label class="border-top no-border-mobile">Notes</label>
+					<h5>No Dietary Notes</h5>
+				</div>
+
+				<label class="border-top">Request to be seated by</label>
+				<h6>Jon Carl</h6>
+				<h6>Hannah Stanley</h6>
+				<h6>Josh Smith</h6>
+			</div>
+
+			<div class="cmpt-button">
+				<button>Back</button>
+				<button class="primary">Save & Continue</button>
+			</div>
+		</div>
+
+		<div class="screen prev-all screen-6 cmpt-thanks">
+			<h2>Thank you!</h2>
+			<h5>Remember to mark your calendar!</h5>
+
+			<h1>Frontline Christmas Party</h1>
+			<h5>December 14th at 6:30pm</h5>
+			<h4>The Sheraton Valley Forge, King of Prussia PA</h4>
+		</div>
+	</div>
+
+	<nav>
+		<div class="nav__item">Event Info</div>
+		<div class="nav__item active">Plus One</div>
+		<div class="nav__item">Food</div>
+		<div class="nav__item">Seating</div>
+		<div class="nav__item">Verify</div>
+	</nav> -->
+
+	<div class="square-container">
+		<div class="square square1"></div>
+		<div class="square square2"></div>
+		<div class="square square3"></div>
+		<div class="square square4"></div>
+	</div>
+
+ 	<!-- <script src="scripts.js"></script> -->
+</body>
+</html>

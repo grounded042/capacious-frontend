@@ -1,0 +1,11 @@
+{
+    "ecmaFeatures": {
+        "es6": true,
+        "classes": true,
+        "modules": true,
+        "blockBindings": true,
+    },
+    "env": {
+      "es6"
+    }
+}
