@@ -4,6 +4,7 @@
   time="reply.eSvc.eventInfo.start_time"
   location="reply.eSvc.eventInfo.location"
   invitee-name="reply.iSvc.inviteeInfo.self.first_name"
+  get-started-fn="reply.nextState()"
 ></event-info>
 <nav>
   <div ng-repeat="item in reply.statesObj.list" class="nav__item" ng-class="item.name == reply.statesObj.getCurrentState().name ? 'active' : ''">{{item.display}}</div>

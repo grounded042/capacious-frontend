@@ -26,6 +26,10 @@ export default class ReplyController {
       return 'active';
     }
   }
+
+  nextState() {
+    this.statesObj.gotoNextState();
+  }
 };
 
 ReplyController.$inject = [
@@ -94,5 +98,18 @@ class states {
     });
 
     return toReturn;
+  }
+
+  gotoNextState() {
+    let curNum = this.currentState.order;
+
+    this.list.every(cs => {
+      if (cs.order == curNum + 1) {
+        this.currentState = cs;
+        return false;
+      }
+
+      return true;
+    });
   }
 }
