@@ -8,16 +8,39 @@ import './css/base.css';
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import routing from './routing';
+// import moment.js
+import 'moment';
+import 'angular-moment';
 
-import HomeController from './features/home/controller'
-import ReplyController from './features/reply/controller'
+// restangular
+import _ from 'underscore';
+window._ = _;
+import 'restangular';
+
+import routing from './routing';
+import run from './run';
+
+import EventService from './services/event';
+import InviteeService from './services/invitee';
+
+import HomeController from './features/home/controller';
+import ReplyController from './features/reply/controller';
+
+import EventInfoDirective from './directives/event_info';
 
 angular.module('app', [
-  uirouter
+  uirouter,
+  'angularMoment',
+  'restangular'
 ])
 
+// load the services
+.service('EventService', EventService)
+.service('InviteeService', InviteeService)
 // load the controllers
 .controller('HomeController', HomeController)
 .controller('ReplyController', ReplyController)
-.config(routing);
+// load the directives
+.directive('eventInfo', EventInfoDirective)
+.config(routing)
+.run(run);

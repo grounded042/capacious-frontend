@@ -12,7 +12,7 @@ export default function routes($stateProvider, $urlRouterProvider) {
       controllerAs: 'home'
     })
     .state('reply', {
-      url: '/reply',
+      url: '/reply/{eventId}/{inviteeId}',
       template: require('./features/reply/index.html'),
       controller: 'ReplyController',
       controllerAs: 'reply'
