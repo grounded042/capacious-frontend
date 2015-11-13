@@ -27,6 +27,7 @@ import HomeController from './features/home/controller';
 import ReplyController from './features/reply/controller';
 
 import EventInfoDirective from './directives/event_info';
+import PlusOneDirective from './directives/plus_one';
 
 angular.module('app', [
   uirouter,
@@ -42,5 +43,6 @@ angular.module('app', [
 .controller('ReplyController', ReplyController)
 // load the directives
 .directive('eventInfo', EventInfoDirective)
+.directive('plusOne', PlusOneDirective)
 .config(routing)
 .run(run);
