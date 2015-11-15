@@ -1,3 +1,5 @@
+const MAX_NOTE_LENGTH = 255;
+
 export default class InviteeService {
   constructor(restangular) {
     this.api = restangular;
@@ -44,6 +46,16 @@ export default class InviteeService {
     });
 
     // save the invitee note
+    if (this.inviteeInfo.self.menu_note.length > MAX_NOTE_LENGTH) {
+      this.inviteeInfo.self.menu_note = this.inviteeInfo.self.menu_note.substring(0, MAX_NOTE_LENGTH);
+    }
+
+    this.inviteeInfo.customPOST({ note_body: this.inviteeInfo.self.menu_note }, this.inviteeInfo.invitee_id + '/relationships/menu_note').then(d => {
+      this.inviteeInfo.self.menu_note = d.note_body;
+    }, d => {
+      console.log("saving the invitee menu note failed!");
+      console.log(d);
+    });
 
     // save the friend menu choices
     // does the friend exist?
@@ -55,9 +67,19 @@ export default class InviteeService {
         console.log("updating the menu choices for the invitee friend failed!");
         console.log(d);
       });
-    }
 
-    // save the invtee friend note
+      // save the invtee friend note
+      if (this.inviteeInfo.friends[0].self.menu_note.length > MAX_NOTE_LENGTH) {
+        this.inviteeInfo.friends[0].self.menu_note = this.inviteeInfo.friends[0].self.menu_note.substring(0, MAX_NOTE_LENGTH);
+      }
+
+      this.inviteeInfo.customPOST({ note_body: this.inviteeInfo.friends[0].self.menu_note }, this.inviteeInfo.invitee_id + '/relationships/friends/' + this.inviteeInfo.friends[0].invitee_friend_id + '/relationships/menu_note').then(d => {
+        this.inviteeInfo.friends[0].self.menu_note = d.note_body;
+      }, d => {
+        console.log("saving the invitee friend menu note failed!");
+        console.log(d);
+      });
+    }
   }
 
   saveFriend() {

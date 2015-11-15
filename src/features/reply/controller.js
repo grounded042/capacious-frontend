@@ -19,13 +19,13 @@ const FOOD = {
 const SEATING = {
   name: "seating",
   display: "Seating",
-  order: 3
+  order: 4
 };
 
 const VERIFY = {
   name: "verify",
   display: "Verify",
-  order: 3
+  order: 5
 };
 
 export default class ReplyController {
