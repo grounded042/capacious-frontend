@@ -49,7 +49,7 @@ export default class ReplyController {
     let curState = this.statesObj.getCurrentState();
 
     if (state.order > curState.order) {
-      return 'next-all';
+      return 'next';
     } else if (state.order < curState.order) {
       return 'prev-all';
     } else if (state.order === curState.order) {
