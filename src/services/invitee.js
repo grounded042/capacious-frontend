@@ -18,12 +18,26 @@ export default class InviteeService {
         })
       }
 
+      // update menu_choices to fit directive needs
+      data.self.menu_choices = buildDirectiveMenuChoicesObj(data.self.menu_choices);
+      data.friends[0].self.menu_choices = buildDirectiveMenuChoicesObj(data.friends[0].self.menu_choices);
+
       this.inviteeInfo = data;
       console.log(data);
     }, (data) => {
       console.log("failed");
       console.log(data);
     });
+
+    function buildDirectiveMenuChoicesObj(curChoices) {
+      let toReturn = {};
+
+      curChoices.forEach((item) => {
+        toReturn[item.menu_item_id] = item.menu_item_option_id;
+      });
+
+      return toReturn;
+    }
   }
 
   poAttending(yesNo) {
@@ -38,7 +52,7 @@ export default class InviteeService {
 
   saveInviteeAndFriendMenuChoices() {
     // save the invitee menu choices
-    this.inviteeInfo.customPOST(this.inviteeInfo.self.menu_choices, this.inviteeInfo.invitee_id + '/relationships/menu_choices').then(d => {
+    this.inviteeInfo.customPOST(buildSelfMenuChoicesArray(this.inviteeInfo.self.menu_choices), this.inviteeInfo.invitee_id + '/relationships/menu_choices').then(d => {
       this.inviteeInfo.self.menu_choices = d;
     }, d => {
       console.log("updating the menu choices for the invitee failed!");
@@ -61,7 +75,7 @@ export default class InviteeService {
     // does the friend exist?
     // is the friend attending?
     if (this.inviteeInfo.friends[0].invitee_friend_id != "" && this.inviteeInfo.friends[0].self.attending) {
-      this.inviteeInfo.customPOST(this.inviteeInfo.friends[0].self.menu_choices, this.inviteeInfo.invitee_id + '/relationships/friends/' + this.inviteeInfo.friends[0].invitee_friend_id + '/relationships/menu_choices').then(d => {
+      this.inviteeInfo.customPOST(buildSelfMenuChoicesArray(this.inviteeInfo.friends[0].self.menu_choices), this.inviteeInfo.invitee_id + '/relationships/friends/' + this.inviteeInfo.friends[0].invitee_friend_id + '/relationships/menu_choices').then(d => {
         this.inviteeInfo.friends[0].self.menu_choices = d;
       }, d => {
         console.log("updating the menu choices for the invitee friend failed!");
@@ -79,6 +93,19 @@ export default class InviteeService {
         console.log("saving the invitee friend menu note failed!");
         console.log(d);
       });
+    }
+
+    function buildSelfMenuChoicesArray(buildFrom) {
+      let choices = [];
+
+      for (let key in buildFrom) {
+        choices.push({
+          menu_item_id: key,
+          menu_item_option_id: buildFrom[key]
+        });
+      }
+
+      return choices;
     }
   }
 

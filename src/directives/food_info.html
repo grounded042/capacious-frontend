@@ -9,7 +9,7 @@
         <label ng-if="item.options.length > 1">Please choose your {{item.name.toLowerCase()}}</label>
         <label ng-if="item.options.length == 1">Please a choose your {{item.name.toLowerCase()}}</label>
         <div class="select-container">
-          <select ng-model="newInviteeMenuChoices[item.menu_item_id]">
+          <select ng-model="inviteeMenuChoices[item.menu_item_id]">
             <option ng-repeat="option in item.options" value="{{option.menu_item_option_id}}">{{option.name}}</option>
           </select>
           <span class="icon-angle-down"></span>
@@ -29,7 +29,7 @@
         <label ng-if="item.options.length > 1">Please choose your {{item.name.toLowerCase()}}</label>
         <label ng-if="item.options.length == 1">Please a choose your {{item.name.toLowerCase()}}</label>
         <div class="select-container">
-          <select ng-model="newFriendMenuChoices[item.menu_item_id]">
+          <select ng-model="friendMenuChoices[item.menu_item_id]">
             <option ng-repeat="option in item.options" value="{{option.menu_item_option_id}}">{{option.name}}</option>
           </select>
           <span class="icon-angle-down"></span>
