@@ -16,6 +16,17 @@
   save-and-continue-fn="reply.nextState()"
 >
 </plus-one>
+<food-info
+  get-loc-class="reply.getLocClass('food')"
+  invitee-name="reply.iSvc.inviteeInfo.self.first_name"
+  invitee-menu-choices="reply.iSvc.inviteeInfo.self.menu_choices"
+  friend-name="reply.iSvc.inviteeInfo.friends[0].self.first_name"
+  friend-attending="reply.iSvc.inviteeInfo.friends[0].self.attending"
+  friend-menu-choices="reply.iSvc.inviteeInfo.friends[0].self.menu_choices"
+  menu-items="reply.mISvc.menuItems"
+  back-fn="reply.prevState()"
+>
+</food-info>
 <nav>
   <div ng-repeat="item in reply.statesObj.list" class="nav__item" ng-class="item.name == reply.statesObj.getCurrentState().name ? 'active' : ''">{{item.display}}</div>
 </nav>

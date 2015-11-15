@@ -1,0 +1,50 @@
+<div class="screen screen-3 cmpt-food" ng-class="getLocClass()">
+  <h2>Please select your food choices.</h2>
+
+  <div class="grid">
+    <div class="unit half">
+      <h4>{{inviteeName}}</h4>
+
+      <div ng-repeat="(key, item) in menuItems" class="form-group vertical">
+        <label ng-if="item.options.length > 1">Please choose your {{item.name.toLowerCase()}}</label>
+        <label ng-if="item.options.length == 1">Please a choose your {{item.name.toLowerCase()}}</label>
+        <div class="select-container">
+          <select ng-model="newInviteeMenuChoices[item.menu_item_id]">
+            <option ng-repeat="option in item.options" value="{{option.menu_item_option_id}}">{{option.name}}</option>
+          </select>
+          <span class="icon-angle-down"></span>
+        </div>
+      </div>
+
+      <div class="form-group vertical">
+        <label>Dietary Notes</label>
+        <textarea placeholder="Add notes here"></textarea>
+      </div>
+    </div>
+
+    <div class="unit half" ng-if="friendAttending">
+      <h4 class="border-top-mobile">{{friendName}}</h4>
+
+      <div ng-repeat="item in menuItems" class="form-group vertical">
+        <label ng-if="item.options.length > 1">Please choose your {{item.name.toLowerCase()}}</label>
+        <label ng-if="item.options.length == 1">Please a choose your {{item.name.toLowerCase()}}</label>
+        <div class="select-container">
+          <select ng-model="newFriendMenuChoices[item.menu_item_id]">
+            <option ng-repeat="option in item.options" value="{{option.menu_item_option_id}}">{{option.name}}</option>
+          </select>
+          <span class="icon-angle-down"></span>
+        </div>
+      </div>
+
+      <div class="form-group vertical">
+        <label>Dietary Notes</label>
+        <textarea placeholder="Add notes here"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="cmpt-button">
+    <button ng-click="backFn()">Back</button>
+    <button class="primary" ng-click="save()">Save & Continue</button>
+  </div>
+</div>

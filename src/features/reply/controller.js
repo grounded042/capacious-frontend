@@ -29,7 +29,7 @@ const VERIFY = {
 };
 
 export default class ReplyController {
-  constructor(eventService, inviteeService, $stateParams) {
+  constructor(eventService, inviteeService, menuItemsService, $stateParams) {
     console.log("welcome to reply");
 
     this.eventId = $stateParams.eventId;
@@ -40,6 +40,9 @@ export default class ReplyController {
 
     this.iSvc = inviteeService;
     this.iSvc.init(this.inviteeId);
+
+    this.mISvc = menuItemsService;
+    this.mISvc.init(this.eventId);
 
     this.statesObj = new states();
   }
@@ -91,6 +94,7 @@ export default class ReplyController {
 ReplyController.$inject = [
   'EventService',
   'InviteeService',
+  'MenuItemsService',
   '$stateParams',
 ];
 
@@ -104,7 +108,7 @@ class states {
       VERIFY
     ];
 
-    this.currentState = EVENT_INFO;
+    this.currentState = FOOD;
   }
 
   getCurrentState() {

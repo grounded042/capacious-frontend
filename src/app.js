@@ -22,12 +22,14 @@ import run from './run';
 
 import EventService from './services/event';
 import InviteeService from './services/invitee';
+import MenuItemsService from './services/menu_items';
 
 import HomeController from './features/home/controller';
 import ReplyController from './features/reply/controller';
 
 import EventInfoDirective from './directives/event_info';
 import PlusOneDirective from './directives/plus_one';
+import FoodInfoDirective from './directives/food_info';
 
 angular.module('app', [
   uirouter,
@@ -38,11 +40,13 @@ angular.module('app', [
 // load the services
 .service('EventService', EventService)
 .service('InviteeService', InviteeService)
+.service('MenuItemsService', MenuItemsService)
 // load the controllers
 .controller('HomeController', HomeController)
 .controller('ReplyController', ReplyController)
 // load the directives
 .directive('eventInfo', EventInfoDirective)
 .directive('plusOne', PlusOneDirective)
+.directive('foodInfo', FoodInfoDirective)
 .config(routing)
 .run(run);
