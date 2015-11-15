@@ -20,11 +20,14 @@
   get-loc-class="reply.getLocClass('food')"
   invitee-name="reply.iSvc.inviteeInfo.self.first_name"
   invitee-menu-choices="reply.iSvc.inviteeInfo.self.menu_choices"
+  invitee-note="reply.iSvc.inviteeInfo.self.menu_note"
   friend-name="reply.iSvc.inviteeInfo.friends[0].self.first_name"
   friend-attending="reply.iSvc.inviteeInfo.friends[0].self.attending"
   friend-menu-choices="reply.iSvc.inviteeInfo.friends[0].self.menu_choices"
+  friend-note="reply.iSvc.inviteeInfo.friends[0].self.menu_note"
   menu-items="reply.mISvc.menuItems"
   back-fn="reply.prevState()"
+  save-and-continue-fn="reply.nextState()"
 >
 </food-info>
 <nav>

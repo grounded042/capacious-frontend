@@ -34,6 +34,32 @@ export default class InviteeService {
 
   }
 
+  saveInviteeAndFriendMenuChoices() {
+    // save the invitee menu choices
+    this.inviteeInfo.customPOST(this.inviteeInfo.self.menu_choices, this.inviteeInfo.invitee_id + '/relationships/menu_choices').then(d => {
+      this.inviteeInfo.self.menu_choices = d;
+    }, d => {
+      console.log("updating the menu choices for the invitee failed!");
+      console.log(d);
+    });
+
+    // save the invitee note
+
+    // save the friend menu choices
+    // does the friend exist?
+    // is the friend attending?
+    if (this.inviteeInfo.friends[0].invitee_friend_id != "" && this.inviteeInfo.friends[0].self.attending) {
+      this.inviteeInfo.customPOST(this.inviteeInfo.friends[0].self.menu_choices, this.inviteeInfo.invitee_id + '/relationships/friends/' + this.inviteeInfo.friends[0].invitee_friend_id + '/relationships/menu_choices').then(d => {
+        this.inviteeInfo.friends[0].self.menu_choices = d;
+      }, d => {
+        console.log("updating the menu choices for the invitee friend failed!");
+        console.log(d);
+      });
+    }
+
+    // save the invtee friend note
+  }
+
   saveFriend() {
     // /invitees/:invitee_id/relationships/friends/:guest_id
 
@@ -47,8 +73,6 @@ export default class InviteeService {
         console.log("creating friend failed!");
         console.log(d);
       });
-
-
       // update with id now!
     } else {
       // yes? save them

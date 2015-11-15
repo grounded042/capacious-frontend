@@ -72,6 +72,7 @@ export default class ReplyController {
         break;
       case FOOD:
         console.log("saving food choices");
+        this.iSvc.saveInviteeAndFriendMenuChoices();
         break;
       case SEATING:
         console.log("saving seating info");

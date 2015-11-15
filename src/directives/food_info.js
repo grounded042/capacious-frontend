@@ -1,4 +1,3 @@
-
 export default function foodInfo() {
   return {
     restrict: 'E',
@@ -6,11 +5,14 @@ export default function foodInfo() {
       getLocClass: '&',
       inviteeName: '=',
       inviteeMenuChoices: '=',
+      inviteeNote: '=',
       friendName: '=',
       friendMenuChoices: '=',
       friendAttending: '=',
+      friendNote: '=',
       menuItems: '=',
-      backFn: '&'
+      backFn: '&',
+      saveAndContinueFn: '&'
     },
     template: require('./food_info.html'),
     link: (scope, element, attr) => {
@@ -19,13 +21,24 @@ export default function foodInfo() {
       scope.newInviteeMenuChoices = {};
       scope.newFriendMenuChoices = {};
 
+      // handle updating the selection object with the choices object and
+      // vice versa
       scope.$watch('inviteeMenuChoices', function(newValue, oldValue, theScope) {
-        scope.newInviteeMenuChoices = buildNewMenuChoicesObj(theScope.inviteeMenuChoices);
+        theScope.newInviteeMenuChoices = buildNewMenuChoicesObj(theScope.inviteeMenuChoices);
+      }, true);
+
+      scope.$watch('newInviteeMenuChoices', function(newValue, oldValue, theScope) {
+        theScope.inviteeMenuChoices = updateMenuChoices(theScope.inviteeMenuChoices, theScope.newInviteeMenuChoices);
       }, true);
 
       scope.$watch('friendMenuChoices', function(newValue, oldValue, theScope) {
-        scope.newFriendMenuChoices = buildNewMenuChoicesObj(theScope.friendMenuChoices);
+        theScope.newFriendMenuChoices = buildNewMenuChoicesObj(theScope.friendMenuChoices);
       }, true);
+
+      scope.$watch('newFriendMenuChoices', function(newValue, oldValue, theScope) {
+        theScope.friendMenuChoices = updateMenuChoices(theScope.friendMenuChoices, theScope.newFriendMenuChoices);
+      }, true);
+      // end updating selection and choices obj
 
       function buildNewMenuChoicesObj(curChoices) {
         let toReturn = {};
@@ -51,13 +64,6 @@ export default function foodInfo() {
         }
 
         return choices;
-      }
-
-
-      scope.save = () => {
-        // update the passed in menu choices with the selected ones
-        scope.inviteeMenuChoices = updateMenuChoices(scope.inviteeMenuChoices, scope.newInviteeMenuChoices);
-        scope.friendMenuChoices = updateMenuChoices(scope.friendMenuChoices, scope.newFriendMenuChoices);
       }
     }
   }
