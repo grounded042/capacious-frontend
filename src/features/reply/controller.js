@@ -4,34 +4,40 @@ const EVENT_INFO = {
   order: 1
 };
 
+const ATTENDANCE = {
+  name: "attendance",
+  display: "Attendance",
+  order: 2
+};
+
 const PLUS_ONE = {
   name: "plusOne",
   display: "Plus One",
-  order: 2
+  order: 3
 };
 
 const FOOD = {
   name: "food",
   display: "Food",
-  order: 3
+  order: 4
 };
 
 const SEATING = {
   name: "seating",
   display: "Seating",
-  order: 4
+  order: 5
 };
 
 const VERIFY = {
   name: "verify",
   display: "Verify",
-  order: 5
+  order: 6
 };
 
 const THANKS = {
   name: "thanks",
   display: false,
-  order: 6
+  order: 7
 };
 
 export default class ReplyController {
@@ -71,6 +77,10 @@ export default class ReplyController {
     switch (this.statesObj.getCurrentState()) {
       case EVENT_INFO:
         console.log("don't need to save any event info");
+        break;
+      case ATTENDANCE:
+        console.log("saving attendance info");
+        this.iSvc.save();
         break;
       case PLUS_ONE:
         console.log("saving plus one info");
@@ -118,6 +128,7 @@ class states {
   constructor() {
     this.list = [
       EVENT_INFO,
+      ATTENDANCE,
       PLUS_ONE,
       FOOD,
       SEATING,

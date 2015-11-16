@@ -6,6 +6,14 @@
   invitee-name="reply.iSvc.inviteeInfo.self.first_name"
   get-started-fn="reply.nextState()"
 ></event-info>
+<attendance
+  get-loc-class="reply.getLocClass('attendance')"
+  will-attend-fn="reply.iSvc.attending(true)"
+  will-not-attend-fn="reply.iSvc.attending(false)"
+  back-fn="reply.prevState()"
+  save-and-continue-fn="reply.nextState()"
+>
+</attendance>
 <plus-one
   get-loc-class="reply.getLocClass('plusOne')"
   will-attend-fn="reply.iSvc.poAttending(true)"

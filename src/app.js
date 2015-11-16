@@ -36,6 +36,7 @@ import FoodInfoDirective from './directives/food_info';
 import SeatingDirective from './directives/seating';
 import VerifyDirective from './directives/verify';
 import ThanksDirective from './directives/thanks';
+import AttendanceDirective from './directives/attendance';
 
 angular.module('app', [
   uirouter,
@@ -58,5 +59,6 @@ angular.module('app', [
 .directive('seating', SeatingDirective)
 .directive('verify', VerifyDirective)
 .directive('thanks', ThanksDirective)
+.directive('attendance', AttendanceDirective)
 .config(routing)
 .run(run);

@@ -1,0 +1,14 @@
+<div class="screen cmpt-spouse grid" ng-class="getLocClass()">
+  <h2>Will you be attending?</h2>
+
+  <div class="form-group horizontal">
+    <label>Please choose one</label>
+    <button ng-click="willAttendFn()">Yes</button>
+    <button ng-click="willNotAttendFn()">No</button>
+  </div>
+
+  <div class="cmpt-button">
+    <button ng-click="backFn()">Back</button>
+    <button class="primary" ng-click="saveAndContinueFn()">Save & Continue</button>
+  </div>
+</div>

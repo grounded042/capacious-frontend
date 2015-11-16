@@ -47,8 +47,13 @@ export default class InviteeService {
     return toReturn;
   }
 
-  poAttending(yesNo) {
+  attending(yesNo) {
     console.log("attending: " + yesNo);
+    this.inviteeInfo.self.attending = yesNo;
+  }
+
+  poAttending(yesNo) {
+    console.log("friend attending: " + yesNo);
     this.inviteeInfo.friends[0].self.attending = yesNo;
   }
 
@@ -84,7 +89,20 @@ export default class InviteeService {
 
   save() {
     // save the invitee
+    let toSave = {};
+    angular.copy(this.inviteeInfo, toSave);
+    delete toSave.self.menu_choices;
+    toSave.friends = toSave.friends.map(i => {
+      delete i.self.menu_choices;
+      return i;
+    })
 
+    this.inviteeInfo.customOperation('patch', toSave.invitee_id, false, false, toSave).then(d => {
+      console.log("SAVED", d);
+    }, d => {
+      console.log("failed to save the invitee!");
+      console.log(d);
+    });
   }
 
   saveSeatingRequest() {
@@ -159,7 +177,7 @@ export default class InviteeService {
     // don't send a bad data type for menu_choices
     let toSave = {};
     angular.copy(this.inviteeInfo.friends[0], toSave);
-    toSave.self.menu_choices = [];
+    delete toSave.self.menu_choices;
 
     // does the friend exist yet?
     if (this.inviteeInfo.friends[0].invitee_friend_id == "") {
