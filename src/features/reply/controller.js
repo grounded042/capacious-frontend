@@ -80,6 +80,7 @@ export default class ReplyController {
         break;
       case SEATING:
         console.log("saving seating info");
+        this.iSvc.saveSeatingRequest();
         break;
       case VERIFY:
         console.log("verify");

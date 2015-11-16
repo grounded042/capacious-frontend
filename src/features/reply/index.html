@@ -33,6 +33,11 @@
 <seating
   get-loc-class="reply.getLocClass('seating')"
   choices="reply.eSvc.SeatingRequestChoices"
+  seating-requests="reply.iSvc.inviteeInfo.seating_request"
+  remove-seating-request-fn="reply.iSvc.removeSeatingRequest(id)"
+  add-seating-request-fn="reply.iSvc.addSeatingRequest(obj)"
+  back-fn="reply.prevState()"
+  save-and-continue-fn="reply.nextState()"
 >
 </seating>
 <nav>

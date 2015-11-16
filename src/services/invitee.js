@@ -47,9 +47,50 @@ export default class InviteeService {
     this.inviteeInfo.friends[0].self.attending = yesNo;
   }
 
+  removeSeatingRequest(id) {
+    if (typeof(id) !== 'undefined') {
+      this.inviteeInfo.seating_request = this.inviteeInfo.seating_request.filter((item) => {
+        if (item.invitee_request_id == id) {
+          return false;
+        }
+
+        return true;
+      });
+    }
+  }
+
+  addSeatingRequest(obj) {
+    if (typeof(obj) !== 'undefined' && !this.isIdInSeatingRequests(obj.invitee_request_id)) {
+      this.inviteeInfo.seating_request.push(obj);
+    }
+  }
+
+  isIdInSeatingRequests(id) {
+    // if every() equals true, we did not find the id in the array
+    // so we want to return false if we did not find it
+    return this.inviteeInfo.seating_request.every((item) => {
+      if (item.invitee_request_id == id) {
+        return false;
+      }
+
+      return true;
+    }) == false;
+  }
+
   save() {
     // save the invitee
 
+  }
+
+  saveSeatingRequest() {
+    console.log("SAVING", this.inviteeInfo.seating_request);
+    this.inviteeInfo.customPOST(this.inviteeInfo.seating_request, this.inviteeInfo.invitee_id + '/relationships/seating_requests').then(d => {
+      console.log("SAVED", d);
+      // this.inviteeInfo.seating_request = d;
+    }, d => {
+      console.log("setting the seating request for the invitee failed!");
+      console.log(d);
+    });
   }
 
   saveInviteeAndFriendMenuChoices() {

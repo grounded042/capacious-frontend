@@ -8,30 +8,27 @@
   <div class="grid">
     <div class="search unit half">
       <span class="icon-search"></span>
-      <!-- <input type="text" class="search-input" placeholder="Search" /> -->
       <angucomplete-alt id="ex1"
-              placeholder="Search"
-              pause="100"
-              selected-object="selectedCountry"
-              local-data="choices"
-              search-fields="first_name,last_name,full_name"
-              title-field="first_name,last_name"
-              minlength="1"
-              input-class="search-input"/>
+        placeholder="Search"
+        pause="100"
+        selected-object="add"
+        local-data="choices"
+        search-fields="first_name,last_name,full_name"
+        title-field="first_name,last_name"
+        minlength="1"
+        input-class="search-input"
+        clear-selected="true"
+      />
     </div>
 
     <div class="attendee-labels unit half">
-      <span class="attendee-label">Jon Carl</span>
-      <span class="attendee-label">Hannah Stanley</span>
-      <span class="attendee-label">Josh Smith</span>
-      <span class="attendee-label">Greg Melrath</span>
-      <span class="attendee-label">Jon Eckert</span>
+      <span class="attendee-label" ng-repeat="(key, value) in seatingRequests" ng-click="remove(value)">{{value.first_name}} {{value.last_name}}</span>
     </div>
   </div>
 
 
   <div class="cmpt-button">
-    <button>Back</button>
-    <button class="primary">Save & Continue</button>
+    <button ng-click="backFn">Back</button>
+    <button class="primary" ng-click="saveAndContinueFn()">Save & Continue</button>
   </div>
 </div>
