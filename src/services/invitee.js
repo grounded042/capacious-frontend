@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 const MAX_NOTE_LENGTH = 255;
 
 export default class InviteeService {
@@ -126,7 +128,10 @@ export default class InviteeService {
     } else {
       // yes? save them
       console.log("saving friend", this.inviteeInfo.friends[0]);
-      this.inviteeInfo.customOperation('patch', this.inviteeInfo.invitee_id + '/relationships/friends/' + this.inviteeInfo.friends[0].invitee_friend_id, false, false, this.inviteeInfo.friends[0]);
+      let toSave = {};
+      angular.copy(this.inviteeInfo.friends[0], toSave);
+      toSave.self.menu_choices = [];
+      this.inviteeInfo.customOperation('patch', this.inviteeInfo.invitee_id + '/relationships/friends/' + this.inviteeInfo.friends[0].invitee_friend_id, false, false, toSave);
     }
   }
 };
