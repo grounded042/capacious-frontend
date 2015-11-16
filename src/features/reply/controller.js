@@ -28,6 +28,12 @@ const VERIFY = {
   order: 5
 };
 
+const THANKS = {
+  name: "thanks",
+  display: false,
+  order: 6
+};
+
 export default class ReplyController {
   constructor(eventService, inviteeService, menuItemsService, $stateParams) {
     console.log("welcome to reply");
@@ -95,6 +101,10 @@ export default class ReplyController {
   prevState() {
     this.statesObj.gotoPrevState();
   }
+
+  displayNavItem(item) {
+    return item.display;
+  }
 };
 
 ReplyController.$inject = [
@@ -111,10 +121,11 @@ class states {
       PLUS_ONE,
       FOOD,
       SEATING,
-      VERIFY
+      VERIFY,
+      THANKS
     ];
 
-    this.currentState = VERIFY;
+    this.currentState = EVENT_INFO;
   }
 
   getCurrentState() {
