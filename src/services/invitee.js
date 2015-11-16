@@ -60,7 +60,7 @@ export default class InviteeService {
   }
 
   addSeatingRequest(obj) {
-    if (typeof(obj) !== 'undefined' && !this.isIdInSeatingRequests(obj.invitee_request_id)) {
+    if (typeof(obj) !== 'undefined' && !this.isIdInSeatingRequests(obj.invitee_request_id) && this.inviteeInfo.seating_request.length + 1 <= 5) {
       this.inviteeInfo.seating_request.push(obj);
     }
   }
