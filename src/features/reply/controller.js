@@ -161,4 +161,15 @@ class states {
       return true;
     });
   }
+
+  gotoState(goToMe) {
+    this.list.every(s => {
+      if (s == goToMe) {
+        this.currentState = s;
+        return false;
+      }
+
+      return true;
+    })
+  }
 }
