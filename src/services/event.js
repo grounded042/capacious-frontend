@@ -9,7 +9,6 @@ export default class EventService {
 
     this.api.one('events', eventId).get().then((data) => {
       this.eventInfo = data;
-      console.log(data);
     }, (data) => {
       console.log("failed");
       console.log(data);
@@ -18,7 +17,6 @@ export default class EventService {
 
   loadSeatingRequestChoices() {
     this.eventInfo.customGET(this.eventId + '/relationships/seating_request_choices').then((d) => {
-      console.log(d);
       this.SeatingRequestChoices = d.map((data) => {
         data.full_name = `${data.first_name} ${data.last_name}`;
         return data;
