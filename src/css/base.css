@@ -413,3 +413,56 @@ nav .nav__item.active {
     padding-top: 2rem;
   }
 }
+
+/*
+* angucomplete
+*/
+
+.angucomplete-holder {
+    position: relative;
+}
+
+.angucomplete-dropdown {
+  font-family: 'Open Sans';
+  font-size: 1.5rem;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid #717171;
+  color: white;
+  border-radius: 3px;
+  width: 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0;
+  cursor: pointer;
+  z-index: 9999;
+  position: absolute;
+  margin-top: -2px;
+}
+
+.angucomplete-searching {
+    color: #acacac;
+    font-size: 14px;
+}
+
+.angucomplete-description {
+    font-size: 14px;
+}
+
+.angucomplete-row {
+    padding: 5px;
+    color: white;
+    margin-bottom: 4px;
+    clear: both;
+}
+
+.angucomplete-selected-row {
+    background-color: rgba(93, 93, 93, 0.41);
+    border: 1px solid #D1D1D1;
+    border-radius: 3px;
+    color: white;
+}
+
+.angucomplete-title {
+  padding-left: 6px;
+}

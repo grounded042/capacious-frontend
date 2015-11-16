@@ -1,0 +1,37 @@
+<div class="screen screen-4 cmpt-seating" ng-class="getLocClass()">
+  <h2>Would you like to be seated with anyone?</h2>
+
+  <h5>You may select up to 5 people. However, depending on other requests, you may not recieve all of your choices, but we will try to match as many as we can.</h5>
+
+  <label>Start typing to search for other attendees</label>
+
+  <div class="grid">
+    <div class="search unit half">
+      <span class="icon-search"></span>
+      <!-- <input type="text" class="search-input" placeholder="Search" /> -->
+      <angucomplete-alt id="ex1"
+              placeholder="Search"
+              pause="100"
+              selected-object="selectedCountry"
+              local-data="choices"
+              search-fields="first_name,last_name,full_name"
+              title-field="first_name,last_name"
+              minlength="1"
+              input-class="search-input"/>
+    </div>
+
+    <div class="attendee-labels unit half">
+      <span class="attendee-label">Jon Carl</span>
+      <span class="attendee-label">Hannah Stanley</span>
+      <span class="attendee-label">Josh Smith</span>
+      <span class="attendee-label">Greg Melrath</span>
+      <span class="attendee-label">Jon Eckert</span>
+    </div>
+  </div>
+
+
+  <div class="cmpt-button">
+    <button>Back</button>
+    <button class="primary">Save & Continue</button>
+  </div>
+</div>

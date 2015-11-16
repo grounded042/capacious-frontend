@@ -12,6 +12,9 @@ import uirouter from 'angular-ui-router';
 import 'moment';
 import 'angular-moment';
 
+// angucomplete
+import 'angucomplete-alt'
+
 // restangular
 import _ from 'underscore';
 window._ = _;
@@ -30,11 +33,13 @@ import ReplyController from './features/reply/controller';
 import EventInfoDirective from './directives/event_info';
 import PlusOneDirective from './directives/plus_one';
 import FoodInfoDirective from './directives/food_info';
+import SeatingDirective from './directives/seating';
 
 angular.module('app', [
   uirouter,
   'angularMoment',
-  'restangular'
+  'restangular',
+  'angucomplete-alt'
 ])
 
 // load the services
@@ -48,5 +53,6 @@ angular.module('app', [
 .directive('eventInfo', EventInfoDirective)
 .directive('plusOne', PlusOneDirective)
 .directive('foodInfo', FoodInfoDirective)
+.directive('seating', SeatingDirective)
 .config(routing)
 .run(run);
