@@ -40,6 +40,24 @@
   save-and-continue-fn="reply.nextState()"
 >
 </seating>
+<verify
+  get-loc-class="reply.getLocClass('verify')"
+  invitee-first-name="reply.iSvc.inviteeInfo.self.first_name"
+  invitee-last-name="reply.iSvc.inviteeInfo.self.last_name"
+  friend-first-name="reply.iSvc.inviteeInfo.friends[0].self.first_name"
+  friend-last-name="reply.iSvc.inviteeInfo.friends[0].self.last_name"
+  invitee-attending="reply.iSvc.inviteeInfo.self.attending"
+  friend-attending="reply.iSvc.inviteeInfo.friends[0].self.attending"
+  menu-items="reply.mISvc.menuItems"
+  invitee-menu-choices="reply.iSvc.inviteeInfo.self.menu_choices"
+  friend-menu-choices="reply.iSvc.inviteeInfo.friends[0].self.menu_choices"
+  invitee-note="reply.iSvc.inviteeInfo.self.menu_note"
+  friend-note="reply.iSvc.inviteeInfo.friends[0].self.menu_note"
+  seating-requests="reply.iSvc.inviteeInfo.seating_request"
+  back-fn="reply.prevState()"
+  save-and-continue-fn="reply.nextState()"
+>
+</verify>
 <nav>
   <div ng-repeat="item in reply.statesObj.list" class="nav__item" ng-class="item.name == reply.statesObj.getCurrentState().name ? 'active' : ''">{{item.display}}</div>
 </nav>

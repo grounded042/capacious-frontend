@@ -114,7 +114,7 @@ class states {
       VERIFY
     ];
 
-    this.currentState = FOOD;
+    this.currentState = VERIFY;
   }
 
   getCurrentState() {
