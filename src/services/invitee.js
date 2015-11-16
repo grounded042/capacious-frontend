@@ -86,7 +86,7 @@ export default class InviteeService {
     console.log("SAVING", this.inviteeInfo.seating_request);
     this.inviteeInfo.customPOST(this.inviteeInfo.seating_request, this.inviteeInfo.invitee_id + '/relationships/seating_requests').then(d => {
       console.log("SAVED", d);
-      // this.inviteeInfo.seating_request = d;
+      this.inviteeInfo.seating_request = d;
     }, d => {
       console.log("setting the seating request for the invitee failed!");
       console.log(d);
