@@ -1,8 +1,10 @@
 <div class="screen screen-6 cmpt-thanks" ng-class="getLocClass()">
   <h2>Thank you!</h2>
-  <h5>Remember to mark your calendar!</h5>
+  <h5 ng-if="attending">Remember to mark your calendar!</h5>
 
-  <h1>{{name}}</h1>
-  <h5>{{time | amDateFormat: 'MMMM Do [at] h:mma'}}</h5>
-  <h4>{{location}}</h4>
+  <div ng-if="attending">
+    <h1>{{name}}</h1>
+    <h5>{{time | amDateFormat: 'MMMM Do [at] h:mma'}}</h5>
+    <h4>{{location}}</h4>
+  </div>
 </div>

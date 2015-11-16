@@ -4,6 +4,7 @@ export default function thanks() {
     restrict: 'E',
     scope: {
       getLocClass: '&',
+      attending: '=',
       name: '=',
       time: '=',
       location: '=',

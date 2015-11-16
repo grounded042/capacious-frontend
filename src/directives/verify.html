@@ -28,12 +28,19 @@
       <h5 ng-if="friendNote.length != 0">{{friendNote}}</h5>
     </div>
 
-    <label class="border-top">Request to be seated by</label>
-    <h6 ng-repeat="(key, value) in seatingRequests">{{value.first_name}} {{value.last_name}}</h6>
+    <div ng-if="inviteeAttending">
+      <label class="border-top">Request to be seated by</label>
+      <h6 ng-repeat="(key, value) in seatingRequests">{{value.first_name}} {{value.last_name}}</h6>
+    </div>
+  </div>
+
+  <div ng-if="!inviteeAttending">
+    <h4>You will not be attending.</h4>
+    <h5>You can come back to this link at any time if you change your mind.</h5>
   </div>
 
   <div class="cmpt-button">
     <button ng-click="backFn()">Back</button>
-    <button class="primary" ng-click="saveAndContinueFn()">Save & Continue</button>
+    <button class="primary" ng-click="saveAndContinueFn()">Save & Finish</button>
   </div>
 </div>
