@@ -73,6 +73,8 @@ export default class ReplyController {
   }
 
   nextState() {
+    let blockNext = false;
+
     // take care of any saving
     switch (this.statesObj.getCurrentState()) {
       case EVENT_INFO:
@@ -81,6 +83,13 @@ export default class ReplyController {
       case ATTENDANCE:
         console.log("saving attendance info");
         this.iSvc.save();
+
+        // if not attending, work some magic and skip to thanks
+        if (!this.iSvc.inviteeInfo.self.attending) {
+          this.statesObj.gotoState(VERIFY);
+          blockNext = true;
+        }
+
         break;
       case PLUS_ONE:
         console.log("saving plus one info");
@@ -105,7 +114,11 @@ export default class ReplyController {
         console.log("nothing needed saving");
     }
 
-    this.statesObj.gotoNextState();
+    if (!blockNext) {
+      this.statesObj.gotoNextState();
+    } else {
+      blockNext = true;
+    }
   }
 
   prevState() {
