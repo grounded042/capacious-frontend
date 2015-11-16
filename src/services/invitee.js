@@ -20,9 +20,10 @@ export default class InviteeService {
         })
       }
 
+
       // update menu_choices to fit directive needs
-      data.self.menu_choices = buildDirectiveMenuChoicesObj(data.self.menu_choices);
-      data.friends[0].self.menu_choices = buildDirectiveMenuChoicesObj(data.friends[0].self.menu_choices);
+      data.self.menu_choices = this.buildDirectiveMenuChoicesObj(data.self.menu_choices);
+      data.friends[0].self.menu_choices = this.buildDirectiveMenuChoicesObj(data.friends[0].self.menu_choices);
 
       this.inviteeInfo = data;
       console.log(data);
@@ -30,16 +31,20 @@ export default class InviteeService {
       console.log("failed");
       console.log(data);
     });
+  }
 
-    function buildDirectiveMenuChoicesObj(curChoices) {
-      let toReturn = {};
+  buildDirectiveMenuChoicesObj(curChoices) {
+    let toReturn = {};
 
-      curChoices.forEach((item) => {
-        toReturn[item.menu_item_id] = item.menu_item_option_id;
-      });
-
-      return toReturn;
+    if (typeof(curChoices) == 'undefined') {
+      curChoices = [];
     }
+
+    curChoices.forEach((item) => {
+      toReturn[item.menu_item_id] = item.menu_item_option_id;
+    });
+
+    return toReturn;
   }
 
   poAttending(yesNo) {
@@ -83,9 +88,7 @@ export default class InviteeService {
   }
 
   saveSeatingRequest() {
-    console.log("SAVING", this.inviteeInfo.seating_request);
     this.inviteeInfo.customPOST(this.inviteeInfo.seating_request, this.inviteeInfo.invitee_id + '/relationships/seating_requests').then(d => {
-      console.log("SAVED", d);
       this.inviteeInfo.seating_request = d;
     }, d => {
       console.log("setting the seating request for the invitee failed!");
@@ -96,7 +99,7 @@ export default class InviteeService {
   saveInviteeAndFriendMenuChoices() {
     // save the invitee menu choices
     this.inviteeInfo.customPOST(buildSelfMenuChoicesArray(this.inviteeInfo.self.menu_choices), this.inviteeInfo.invitee_id + '/relationships/menu_choices').then(d => {
-      this.inviteeInfo.self.menu_choices = d;
+      this.inviteeInfo.self.menu_choices = this.buildDirectiveMenuChoicesObj(d);
     }, d => {
       console.log("updating the menu choices for the invitee failed!");
       console.log(d);
@@ -119,7 +122,7 @@ export default class InviteeService {
     // is the friend attending?
     if (this.inviteeInfo.friends[0].invitee_friend_id != "" && this.inviteeInfo.friends[0].self.attending) {
       this.inviteeInfo.customPOST(buildSelfMenuChoicesArray(this.inviteeInfo.friends[0].self.menu_choices), this.inviteeInfo.invitee_id + '/relationships/friends/' + this.inviteeInfo.friends[0].invitee_friend_id + '/relationships/menu_choices').then(d => {
-        this.inviteeInfo.friends[0].self.menu_choices = d;
+        this.inviteeInfo.friends[0].self.menu_choices = this.buildDirectiveMenuChoicesObj(d);
       }, d => {
         console.log("updating the menu choices for the invitee friend failed!");
         console.log(d);
@@ -153,13 +156,16 @@ export default class InviteeService {
   }
 
   saveFriend() {
-    // /invitees/:invitee_id/relationships/friends/:guest_id
+    // don't send a bad data type for menu_choices
+    let toSave = {};
+    angular.copy(this.inviteeInfo.friends[0], toSave);
+    toSave.self.menu_choices = [];
 
     // does the friend exist yet?
     if (this.inviteeInfo.friends[0].invitee_friend_id == "") {
       // no? create them
-      console.log("creating friend", this.inviteeInfo.friends[0]);
-      this.inviteeInfo.customPOST(this.inviteeInfo.friends[0], this.inviteeInfo.invitee_id + '/relationships/friends').then(d => {
+      console.log("creating friend", toSave);
+      this.inviteeInfo.customPOST(toSave, this.inviteeInfo.invitee_id + '/relationships/friends').then(d => {
         this.inviteeInfo.friends[0] = d;
       }, d => {
         console.log("creating friend failed!");
@@ -168,10 +174,7 @@ export default class InviteeService {
       // update with id now!
     } else {
       // yes? save them
-      console.log("saving friend", this.inviteeInfo.friends[0]);
-      let toSave = {};
-      angular.copy(this.inviteeInfo.friends[0], toSave);
-      toSave.self.menu_choices = [];
+      console.log("saving friend", toSave);
       this.inviteeInfo.customOperation('patch', this.inviteeInfo.invitee_id + '/relationships/friends/' + this.inviteeInfo.friends[0].invitee_friend_id, false, false, toSave);
     }
   }
