@@ -8,6 +8,7 @@ export default function eventInfo() {
       time: '=',
       location: '=',
       inviteeName: '=',
+      respondBy: '=',
       getStartedFn: '&',
     },
     template: require('./event_info.html'),
