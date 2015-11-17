@@ -124,11 +124,18 @@ export default class ReplyController {
   disableSaveAndContinue(stateName) {
     switch (this.statesObj.getStateByName(stateName)) {
       case PLUS_ONE:
-        return this.iSvc.inviteeInfo.friends[0].self.attending &&
+        return this.iSvc.inviteeInfo.friends.length > 0 &&
+          this.iSvc.inviteeInfo.friends[0].self.attending &&
           (this.iSvc.inviteeInfo.friends[0].self.first_name.length == 0 ||
           this.iSvc.inviteeInfo.friends[0].self.last_name.length == 0);
         break;
       case FOOD:
+        let numItems = this.mISvc.menuItems.length;
+
+        return (this.iSvc.inviteeInfo.self.attending &&
+          _.size(this.iSvc.inviteeInfo.self.menu_choices) != numItems) ||
+          (this.iSvc.inviteeInfo.friends[0].self.attending &&
+            _.size(this.iSvc.inviteeInfo.friends[0].self.menu_choices) != numItems);
         break;
       default:
         console.log("nothing needed verifying!");

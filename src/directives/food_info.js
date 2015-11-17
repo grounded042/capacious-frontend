@@ -11,6 +11,7 @@ export default function foodInfo() {
       friendAttending: '=',
       friendNote: '=',
       menuItems: '=',
+      disableSaveFn: '&',
       backFn: '&',
       saveAndContinueFn: '&'
     },
