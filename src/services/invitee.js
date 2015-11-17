@@ -5,6 +5,16 @@ const MAX_NOTE_LENGTH = 255;
 export default class InviteeService {
   constructor(restangular) {
     this.api = restangular;
+    this.inviteeInfo = {
+      friends: [{
+        self: {
+          menu_choices: {},
+        },
+      }],
+      self: {
+        menu_choices: {},
+      }
+    };
   }
 
   init(inviteeId) {
