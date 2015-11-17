@@ -1,0 +1,9 @@
+{
+  "firebase": "capacious",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
