@@ -1,6 +1,7 @@
 export default class MenuItems {
   constructor(restangular) {
     this.api = restangular;
+    this.menuItems = [];
   }
 
   init(eventId) {
