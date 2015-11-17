@@ -7,7 +7,7 @@
 
       <div ng-repeat="(key, item) in menuItems" class="form-group vertical">
         <label ng-if="item.options.length > 1">Please choose your {{item.name.toLowerCase()}}</label>
-        <label ng-if="item.options.length == 1">Please a choose your {{item.name.toLowerCase()}}</label>
+        <label ng-if="item.options.length == 1">Please choose your {{item.name.toLowerCase()}} (only one choice available)</label>
         <div class="select-container">
           <select ng-model="inviteeMenuChoices[item.menu_item_id]">
             <option ng-repeat="option in item.options" value="{{option.menu_item_option_id}}">{{option.name}}</option>
@@ -27,7 +27,7 @@
 
       <div ng-repeat="item in menuItems" class="form-group vertical">
         <label ng-if="item.options.length > 1">Please choose your {{item.name.toLowerCase()}}</label>
-        <label ng-if="item.options.length == 1">Please a choose your {{item.name.toLowerCase()}}</label>
+        <label ng-if="item.options.length == 1">Please a choose your {{item.name.toLowerCase()}} (only one choice available)</label>
         <div class="select-container">
           <select ng-model="friendMenuChoices[item.menu_item_id]">
             <option ng-repeat="option in item.options" value="{{option.menu_item_option_id}}">{{option.name}}</option>
