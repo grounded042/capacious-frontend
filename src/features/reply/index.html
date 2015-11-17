@@ -77,5 +77,10 @@
 >
 </thanks>
 <nav>
-  <div ng-repeat="item in reply.statesObj.list | filter : reply.displayNavItem" class="nav__item" ng-class="item.name == reply.statesObj.getCurrentState().name ? 'active' : ''" ng-click="reply.statesObj.gotoState(item)">{{item.display}}</div>
+  <div
+    ng-repeat="item in reply.statesObj.list | filter : reply.displayNavItem"
+    class="nav__item"
+    ng-class="item.name == reply.statesObj.getCurrentState().name ? 'active' : ''"
+    ng-click="reply.navClick(item)"
+  >{{item.display}}</div>
 </nav>

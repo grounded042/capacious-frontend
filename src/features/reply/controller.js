@@ -132,6 +132,13 @@ export default class ReplyController {
         break;
       default:
         console.log("nothing needed verifying!");
+        return false;
+    }
+  }
+
+  navClick(state) {
+    if (!this.disableSaveAndContinue(this.statesObj.getCurrentState().name)) {
+      this.statesObj.gotoState(state);
     }
   }
 
