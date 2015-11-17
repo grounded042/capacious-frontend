@@ -9,6 +9,7 @@ export default function plusOne() {
       attending: '=',
       firstName: '=',
       lastName: '=',
+      disableSaveFn: '&',
       backFn: '&',
       saveAndContinueFn: '&',
     },

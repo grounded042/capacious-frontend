@@ -121,6 +121,20 @@ export default class ReplyController {
     }
   }
 
+  disableSaveAndContinue(stateName) {
+    switch (this.statesObj.getStateByName(stateName)) {
+      case PLUS_ONE:
+        return this.iSvc.inviteeInfo.friends[0].self.attending &&
+          (this.iSvc.inviteeInfo.friends[0].self.first_name.length == 0 ||
+          this.iSvc.inviteeInfo.friends[0].self.last_name.length == 0);
+        break;
+      case FOOD:
+        break;
+      default:
+        console.log("nothing needed verifying!");
+    }
+  }
+
   prevState() {
     this.statesObj.gotoPrevState();
   }
