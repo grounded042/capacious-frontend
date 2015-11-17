@@ -194,6 +194,7 @@ export default class InviteeService {
       // no? create them
       console.log("creating friend", toSave);
       this.inviteeInfo.customPOST(toSave, this.inviteeInfo.invitee_id + '/relationships/friends').then(d => {
+        d.self.menu_choices = this.buildDirectiveMenuChoicesObj(d.self.menu_choices);
         this.inviteeInfo.friends[0] = d;
       }, d => {
         console.log("creating friend failed!");

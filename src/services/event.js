@@ -9,6 +9,7 @@ export default class EventService {
 
     this.api.one('events', eventId).get().then((data) => {
       this.eventInfo = data;
+      this.loadSeatingRequestChoices();
     }, (data) => {
       console.log("failed");
       console.log(data);
