@@ -6,7 +6,6 @@ export default function plusOne() {
       getLocClass: '&',
       willAttendFn: '&',
       willNotAttendFn: '&',
-      attending: '=',
       firstName: '=',
       lastName: '=',
       disableSaveFn: '&',
