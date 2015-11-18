@@ -257,8 +257,8 @@ nav .nav__item.active {
   opacity: 0;
 }
 .screen.next {
-  top: 100%;
-  transform: translateY(250%);
+  top: 50%;
+  transform: translateY(300%);
   opacity: 0;
 }
 
