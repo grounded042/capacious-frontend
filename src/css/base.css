@@ -242,7 +242,7 @@ nav .nav__item.active {
   opacity: 0;
 }
 .screen.next {
-  top: 50%;
+  top: 100%;
   transform: translateY(250%);
   opacity: 0;
 }
@@ -250,7 +250,7 @@ nav .nav__item.active {
   margin-top: 4rem;
 }
 .cmpt-intro p {
-  max-width: 520px;
+  max-width: 650px;
 }
 .cmpt-spouse .margin-left {
   margin-left: 4rem;
@@ -412,6 +412,10 @@ nav .nav__item.active {
     border-top: 1px solid #A5A5A5;
     padding-top: 2rem;
   }
+}
+
+.single-menu-item {
+  margin-top: 1rem;
 }
 
 /*

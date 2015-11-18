@@ -130,17 +130,28 @@ export default class ReplyController {
           this.iSvc.inviteeInfo.friends[0].self.last_name.length == 0);
         break;
       case FOOD:
-        let numItems = this.mISvc.menuItems.length;
-
-        return (this.iSvc.inviteeInfo.self.attending &&
-          _.size(this.iSvc.inviteeInfo.self.menu_choices) != numItems) ||
-          (this.iSvc.inviteeInfo.friends[0].self.attending &&
-            _.size(this.iSvc.inviteeInfo.friends[0].self.menu_choices) != numItems);
+        return this.verifyFoodChoices(this.mISvc.menuItems, this.iSvc.inviteeInfo);
         break;
       default:
         console.log("nothing needed verifying!");
         return false;
     }
+  }
+
+  verifyFoodChoices(menuItems, inviteeInfo) {
+    // get the number of items they need to choose
+    let numItems = menuItems.filter(i => {
+      if (i.options.length > 1) {
+        return true;
+      }
+
+      return false;
+    }).length;
+
+    return (inviteeInfo.self.attending &&
+      _.size(inviteeInfo.self.menu_choices) != numItems) ||
+      (inviteeInfo.friends[0].self.attending &&
+        _.size(inviteeInfo.friends[0].self.menu_choices) != numItems);
   }
 
   navClick(state) {
@@ -177,7 +188,7 @@ class states {
       THANKS
     ];
 
-    this.currentState = EVENT_INFO;
+    this.currentState = FOOD;
   }
 
   getCurrentState() {
