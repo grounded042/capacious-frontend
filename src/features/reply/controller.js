@@ -188,7 +188,7 @@ class states {
       THANKS
     ];
 
-    this.currentState = FOOD;
+    this.currentState = EVENT_INFO;
   }
 
   getCurrentState() {
