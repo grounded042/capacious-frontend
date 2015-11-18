@@ -11,6 +11,7 @@
   get-loc-class="reply.getLocClass('attendance')"
   will-attend-fn="reply.iAttending(true)"
   will-not-attend-fn="reply.iAttending(false)"
+  attending="reply.iSvc.inviteeInfo.self.attending"
   back-fn="reply.prevState()"
   save-and-continue-fn="reply.nextState()"
 >
@@ -21,6 +22,7 @@
   will-not-attend-fn="reply.sOAttending(false)"
   first-name="reply.iSvc.inviteeInfo.friends[0].self.first_name"
   last-name="reply.iSvc.inviteeInfo.friends[0].self.last_name"
+  attending="reply.iSvc.inviteeInfo.friends[0].self.attending"
   disable-save-fn="reply.disableSaveAndContinue('plusOne')"
   back-fn="reply.prevState()"
   save-and-continue-fn="reply.nextState()"

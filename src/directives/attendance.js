@@ -6,6 +6,7 @@ export default function attendance() {
       getLocClass: '&',
       willAttendFn: '&',
       willNotAttendFn: '&',
+      attending: '=',
       backFn: '&',
       saveAndContinueFn: '&',
     },

@@ -8,6 +8,7 @@ export default function plusOne() {
       willNotAttendFn: '&',
       firstName: '=',
       lastName: '=',
+      attending: '=',
       disableSaveFn: '&',
       backFn: '&',
       saveAndContinueFn: '&',

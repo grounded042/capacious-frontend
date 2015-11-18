@@ -3,8 +3,8 @@
 
   <div class="form-group horizontal">
     <label>Please choose one</label>
-    <button ng-click="willAttendFn()">Yes</button>
-    <button ng-click="willNotAttendFn()">No</button>
+    <button ng-click="willAttendFn()" ng-class="{'selected-yes': attending}">Yes</button>
+    <button ng-click="willNotAttendFn()" ng-class="{'selected-no': !attending}">No</button>
   </div>
 
   <div class="form-group horizontal margin-left border-top-mobile">
