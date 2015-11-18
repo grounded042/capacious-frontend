@@ -377,7 +377,7 @@ nav .nav__item.active {
   padding-top: 1.5rem;
   clear: both;
 }
-.cmpt-verify .margin-top {
+.cmpt-verify .menu-items:nth-of-type(1) {
   margin-top: 3rem;
 }
 .cmpt-thanks h1 {

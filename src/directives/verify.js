@@ -19,6 +19,9 @@ export default function verify() {
       backFn: '&',
       saveAndContinueFn: '&',
     },
-    template: require('./verify.html')
+    template: require('./verify.html'),
+    link: scope => {
+      scope.showMenu = false;
+    }
   }
 };
