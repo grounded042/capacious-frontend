@@ -54,6 +54,7 @@ label {
   display: block;
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  color: #8A8A8A;
 }
 /* Button Styles */
 button {
@@ -260,6 +261,31 @@ nav .nav__item.active {
   transform: translateY(250%);
   opacity: 0;
 }
+
+.modal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.89);
+  left: 7rem;
+  right: 7rem;
+  top: 7rem;
+  bottom: 7rem;
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.25);
+}
+
+.modal .icon-cross {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 3.4rem;
+  opacity: 0.5;
+}
+
+.modal .icon-cross:hover {
+  opacity: 1;
+}
+
 .cmpt-button {
   margin-top: 4rem;
 }
@@ -386,6 +412,15 @@ nav .nav__item.active {
   .screen.prev-all {
     display: none;
   }
+
+  .modal {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    overflow-y: scroll;
+  }
+
   .grid .unit {
     padding-left: 0;
     padding-right: 0;
