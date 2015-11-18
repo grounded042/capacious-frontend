@@ -16,6 +16,7 @@ body {
   width: 100%;
   color: #fff;
   -webkit-font-smoothing: antialiased;
+  overflow: hidden;
 }
 /* Heading styles */
 h1,
@@ -27,7 +28,7 @@ h2 {
   margin-bottom: 1.5rem;
 }
 h1 {
-  font-size: 6.5rem;
+  font-size: 5.5rem;
 }
 h2 {
   font-size: 4rem;
@@ -88,6 +89,17 @@ button.primary:focus {
   outline: none;
   border-color: #f3d8ac;
 }
+
+button.selected-yes {
+  background: rgba(94, 156, 94, 0.75);
+  border-color: rgba(91, 191, 91, 0.75);
+}
+
+button.selected-no {
+  background: rgba(156, 94, 103, 0.75);
+  border-color: rgba(191, 91, 119, 0.75);
+}
+
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -339,6 +351,9 @@ nav .nav__item.active {
   margin-top: 3rem;
 }
 @media (max-width: 568px) {
+  body {
+    overflow: auto;
+  }
   nav {
     display: none;
   }
