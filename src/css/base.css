@@ -280,10 +280,15 @@ nav .nav__item.active {
   top: 1rem;
   font-size: 3.4rem;
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .modal .icon-cross:hover {
   opacity: 1;
+}
+
+.show-menu {
+  cursor: pointer;
 }
 
 .cmpt-button {

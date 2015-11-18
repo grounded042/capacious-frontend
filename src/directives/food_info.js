@@ -15,6 +15,9 @@ export default function foodInfo() {
       backFn: '&',
       saveAndContinueFn: '&'
     },
-    template: require('./food_info.html')
+    template: require('./food_info.html'),
+    link: scope => {
+      scope.showMenu = false;
+    }
   }
 };

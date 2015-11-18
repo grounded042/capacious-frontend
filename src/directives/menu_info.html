@@ -1,0 +1,12 @@
+<div class="modal">
+  <h4>Menu</h4>
+    <div class="unit half">
+      <div ng-repeat="(key, item) in menuItems" class="form-group vertical">
+        <label ng-if="item.options.length > 1">{{item.name}} (your choice)</label>
+        <label ng-if="item.options.length == 1">{{item.name}}</label>
+        <p ng-if="item.options.length == 1" class="single-menu-item">{{item.options[0].name}}</p>
+        <p ng-if="item.options.length > 1" class="single-menu-item" ng-repeat="option in item.options">{{option.name}}</p>
+      </div>
+    </div>
+  <i class="icon-cross" ng-click="displayModal = !displayModal"></i>
+</div>

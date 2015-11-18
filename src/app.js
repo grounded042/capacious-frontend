@@ -33,6 +33,7 @@ import ReplyController from './features/reply/controller';
 import EventInfoDirective from './directives/event_info';
 import PlusOneDirective from './directives/plus_one';
 import FoodInfoDirective from './directives/food_info';
+import MenuInfoDirective from './directives/menu_info';
 import SeatingDirective from './directives/seating';
 import VerifyDirective from './directives/verify';
 import ThanksDirective from './directives/thanks';
@@ -56,6 +57,7 @@ angular.module('app', [
 .directive('eventInfo', EventInfoDirective)
 .directive('plusOne', PlusOneDirective)
 .directive('foodInfo', FoodInfoDirective)
+.directive('menuInfo', MenuInfoDirective)
 .directive('seating', SeatingDirective)
 .directive('verify', VerifyDirective)
 .directive('thanks', ThanksDirective)
