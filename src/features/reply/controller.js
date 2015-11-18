@@ -177,7 +177,7 @@ export default class ReplyController {
 
     switch (this.statesObj.getCurrentState()) {
       case VERIFY:
-        if (!this.iSvc.inviteeInfo.attending) {
+        if (!this.iSvc.inviteeInfo.self.attending) {
           this.statesObj.gotoState(ATTENDANCE);
           blockPrev = true;
         }
