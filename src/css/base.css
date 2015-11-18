@@ -301,6 +301,15 @@ nav .nav__item.active {
 .cmpt-spouse .margin-left {
   margin-left: 4rem;
 }
+
+.show-menu {
+  font-size: 1.5rem;
+  margin-top: -1rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: #6E94DE;
+  text-decoration: underline;
+}
 .cmpt-seating label {
   margin-top: 1.5rem;
 }
@@ -501,7 +510,7 @@ nav .nav__item.active {
   z-index: 9999;
   position: absolute;
   margin-top: -2px;
-  height: 250px;
+  max-height: 250px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
