@@ -41,8 +41,9 @@ const THANKS = {
 };
 
 export default class ReplyController {
-  constructor(eventService, inviteeService, menuItemsService, $stateParams) {
+  constructor(eventService, inviteeService, menuItemsService, $stateParams, $q) {
     console.log("welcome to reply");
+    this.loading = true;
 
     this.eventId = $stateParams.eventId;
     this.inviteeId = $stateParams.inviteeId;
@@ -57,6 +58,11 @@ export default class ReplyController {
     this.mISvc.init(this.eventId);
 
     this.statesObj = new states();
+
+    $q.all([this.iSvc.q.promise, this.eSvc.q.promise, this.mISvc.q.promise]).then(d => {
+      console.log("loading complete");
+      this.loading = false;
+    })
   }
 
   getLocClass(stateName) {
@@ -200,6 +206,7 @@ ReplyController.$inject = [
   'InviteeService',
   'MenuItemsService',
   '$stateParams',
+  '$q',
 ];
 
 class states {

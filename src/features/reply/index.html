@@ -1,4 +1,27 @@
+<div ng-show="reply.loading" class="loading">
+  <div class="loader" title="7">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+      <rect x="0" y="5.08744" width="4" height="19.8251" fill="#fff" opacity="0.2">
+        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+      </rect>
+      <rect x="8" y="7.58744" width="4" height="14.8251" fill="#fff" opacity="0.2">
+        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+      </rect>
+      <rect x="16" y="9.91256" width="4" height="10.1749" fill="#fff" opacity="0.2">
+        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+      </rect>
+    </svg>
+  </div>
+</div>
+
 <event-info
+  ng-show="!reply.loading"
   get-loc-class="reply.getLocClass('eventInfo')"
   name="reply.eSvc.eventInfo.name"
   time="reply.eSvc.eventInfo.start_time"
@@ -8,6 +31,7 @@
   get-started-fn="reply.nextState()"
 ></event-info>
 <attendance
+  ng-show="!reply.loading"
   get-loc-class="reply.getLocClass('attendance')"
   will-attend-fn="reply.iAttending(true)"
   will-not-attend-fn="reply.iAttending(false)"
@@ -17,6 +41,7 @@
 >
 </attendance>
 <plus-one
+  ng-show="!reply.loading"
   get-loc-class="reply.getLocClass('plusOne')"
   will-attend-fn="reply.sOAttending(true)"
   will-not-attend-fn="reply.sOAttending(false)"
@@ -29,6 +54,7 @@
 >
 </plus-one>
 <food-info
+  ng-show="!reply.loading"
   get-loc-class="reply.getLocClass('food')"
   invitee-name="reply.iSvc.inviteeInfo.self.first_name"
   invitee-menu-choices="reply.iSvc.inviteeInfo.self.menu_choices"
@@ -44,6 +70,7 @@
 >
 </food-info>
 <seating
+  ng-show="!reply.loading"
   get-loc-class="reply.getLocClass('seating')"
   choices="reply.eSvc.SeatingRequestChoices"
   seating-requests="reply.iSvc.inviteeInfo.seating_request"
@@ -54,6 +81,7 @@
 >
 </seating>
 <verify
+  ng-show="!reply.loading"
   get-loc-class="reply.getLocClass('verify')"
   invitee-first-name="reply.iSvc.inviteeInfo.self.first_name"
   invitee-last-name="reply.iSvc.inviteeInfo.self.last_name"
@@ -72,6 +100,7 @@
 >
 </verify>
 <thanks
+  ng-show="!reply.loading"
   get-loc-class="reply.getLocClass('thanks')"
   attending="reply.iSvc.inviteeInfo.self.attending"
   name="reply.eSvc.eventInfo.name"
@@ -81,6 +110,7 @@
 </thanks>
 <nav>
   <div
+    ng-show="!reply.loading"
     ng-repeat="item in reply.statesObj.list | filter : reply.displayNavItem"
     class="nav__item"
     ng-class="{'active': item.name == reply.statesObj.getCurrentState().name, 'allow-hover': item.order < reply.statesObj.getCurrentState().order}"

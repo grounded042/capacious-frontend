@@ -3,7 +3,7 @@ import angular from 'angular';
 const MAX_NOTE_LENGTH = 255;
 
 export default class InviteeService {
-  constructor(restangular) {
+  constructor(restangular, $q) {
     this.api = restangular;
     this.inviteeInfo = {
       friends: [{
@@ -15,6 +15,7 @@ export default class InviteeService {
         menu_choices: {},
       }
     };
+    this.q = $q.defer();
   }
 
   init(inviteeId) {
@@ -30,14 +31,15 @@ export default class InviteeService {
         })
       }
 
-
       // update menu_choices to fit directive needs
       data.self.menu_choices = this.buildDirectiveMenuChoicesObj(data.self.menu_choices);
       data.friends[0].self.menu_choices = this.buildDirectiveMenuChoicesObj(data.friends[0].self.menu_choices);
 
       this.inviteeInfo = data;
+      this.q.resolve();
       console.log(data);
     }, (data) => {
+      this.q.reject();
       console.log("failed");
       console.log(data);
     });
@@ -209,4 +211,4 @@ export default class InviteeService {
   }
 };
 
-InviteeService.$inject = ['Restangular'];
+InviteeService.$inject = ['Restangular', '$q'];
