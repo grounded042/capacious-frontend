@@ -160,6 +160,19 @@ export default class ReplyController {
     }
   }
 
+  iAttending(yesNo) {
+    this.iSvc.attending(yesNo);
+    this.nextState();
+  }
+
+  sOAttending(yesNo) {
+    this.iSvc.poAttending(yesNo);
+
+    if (!yesNo) {
+      this.nextState();
+    }
+  }
+
   prevState() {
     this.statesObj.gotoPrevState();
   }
