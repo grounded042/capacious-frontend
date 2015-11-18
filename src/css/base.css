@@ -401,7 +401,7 @@ nav .nav__item.active {
 }
 .cmpt-verify .border-top {
   margin-top: 1.5rem;
-  border-top: 1px solid #A5A5A5;
+  border-top: 1px solid rgba(255, 255, 255, 0.19);
   padding-top: 1.5rem;
   clear: both;
 }
