@@ -147,9 +147,9 @@ export default class ReplyController {
     }).length;
 
     return (inviteeInfo.self.attending &&
-      _.size(inviteeInfo.self.menu_choices) != numItems) ||
+      _.size(inviteeInfo.self.menu_choices) < numItems) ||
       (inviteeInfo.friends[0].self.attending &&
-        _.size(inviteeInfo.friends[0].self.menu_choices) != numItems);
+        _.size(inviteeInfo.friends[0].self.menu_choices) < numItems);
   }
 
   navClick(state) {
