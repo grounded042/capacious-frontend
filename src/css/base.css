@@ -263,6 +263,7 @@ nav .nav__item.active {
 }
 
 .modal {
+  z-index: 1;
   position: fixed;
   background: rgba(0, 0, 0, 0.89);
   left: 7rem;
