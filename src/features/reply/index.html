@@ -81,7 +81,7 @@
   <div
     ng-repeat="item in reply.statesObj.list | filter : reply.displayNavItem"
     class="nav__item"
-    ng-class="item.name == reply.statesObj.getCurrentState().name ? 'active' : ''"
+    ng-class="{'active': item.name == reply.statesObj.getCurrentState().name, 'allow-hover': item.order < reply.statesObj.getCurrentState().order}"
     ng-click="reply.navClick(item)"
   >{{item.display}}</div>
 </nav>

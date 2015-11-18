@@ -116,8 +116,6 @@ export default class ReplyController {
 
     if (!blockNext) {
       this.statesObj.gotoNextState();
-    } else {
-      blockNext = true;
     }
   }
 
@@ -155,7 +153,8 @@ export default class ReplyController {
   }
 
   navClick(state) {
-    if (!this.disableSaveAndContinue(this.statesObj.getCurrentState().name)) {
+    // only allow clicks on prev states
+    if (this.statesObj.getCurrentState().order > state.order) {
       this.statesObj.gotoState(state);
     }
   }
@@ -174,7 +173,21 @@ export default class ReplyController {
   }
 
   prevState() {
-    this.statesObj.gotoPrevState();
+    let blockPrev = false;
+
+    switch (this.statesObj.getCurrentState()) {
+      case VERIFY:
+        if (!this.iSvc.inviteeInfo.attending) {
+          this.statesObj.gotoState(ATTENDANCE);
+          blockPrev = true;
+        }
+        break;
+      default:
+    }
+
+    if (!blockPrev) {
+      this.statesObj.gotoPrevState();
+    }
   }
 
   displayNavItem(item) {

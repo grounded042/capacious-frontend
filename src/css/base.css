@@ -206,12 +206,14 @@ nav {
 }
 nav .nav__item {
   padding: 0.5rem;
-  cursor: pointer;
   color: #8A8888;
   font-weight: 300;
   transition: transform 60ms;
 }
-nav .nav__item:hover {
+nav .nav__item.allow-hover {
+  cursor: pointer;
+}
+nav .nav__item.allow-hover:hover {
   color: #BDBDBD;
   transform: translateX(-5px);
 }
