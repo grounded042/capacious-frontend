@@ -1,0 +1,23 @@
+<md-content layout="row" layout-align="center center" class="login-container md-padding">
+  <div flex="33" class="card">
+    <md-card>
+      <md-card-content>
+        <form name="login" ng-submit="ac.login(creds)">
+          <md-input-container>
+            <label for="email">email address</label>
+            <input id="email" class="form-control" ng-model="creds.email" type="text"/>
+          </md-input-container>
+
+          <md-input-container>
+            <label for="password">password</label>
+            <input id="password" class="form-control" ng-model="creds.password" type="password"/>
+          </md-input-container>
+
+          <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary" type="submit">Login</md-button>
+          </section>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>
