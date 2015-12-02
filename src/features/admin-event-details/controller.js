@@ -15,6 +15,8 @@ export default class EventDetailsAdminController {
 
     this.paginationchange = this.paginationchange.bind(this);
     this.paginationchange(this.pagination.page, this.pagination.size);
+
+    this.aSvc.loadEventStats(this.event_id);
   }
 
   paginationchange(page, size) {

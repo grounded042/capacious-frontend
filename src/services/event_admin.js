@@ -21,17 +21,28 @@ export default class EventAdminService {
       "page[size]": size,
     };
 
-    this.api.all('events').one(id).one('relationships').one(`invitees`)
+    this.api.all('events').one(id).one('relationships').one('invitees')
     .get(params).then((data) => {
       console.log(data);
       this.event_invitees = data.data;
       d.resolve(data.pagination);
     }, () => {
-      console.log("error getting invittes");
+      console.log("error getting invitees");
       d.reject();
     });
 
     return d.promise;
+  }
+
+  loadEventStats(id) {
+    this.api.all('events').one(id).one('relationships').one('stats')
+    .get().then((data) => {
+      console.log(data);
+      this.stats = data;
+    }, () => {
+      console.log("error getting stats");
+      d.reject();
+    });
   }
 }
 
