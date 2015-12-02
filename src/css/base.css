@@ -585,12 +585,14 @@ body.reply {
 
 .admin-events ui-view md-content.card-container,
 .admin-event-details ui-view md-content.card-container {
-  margin-top: -50px;
+  margin-top: 25px;
 }
 
 .admin-events md-content.card-container div.card,
 .admin-event-details md-content.card-container div.card {
   z-index: 5;
+  margin-left: 75px;
+  margin-right: 75px;
 }
 
 md-card md-card-title {

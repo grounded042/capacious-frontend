@@ -4,6 +4,8 @@ import './css/gridism.css';
 import './css/fonts.css';
 import './css/icon-font.css';
 import './css/base.css';
+import './css/angular-material.min.css';
+import './css/md-data-table.css';
 
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
@@ -27,6 +29,7 @@ import 'ngstorage';
 // angular material
 import './scripts/angular-aria.min.js';
 import './scripts/angular-material.min.js';
+import mdDataTable from 'angular-material-data-table';
 
 import routing from './routing';
 import run from './run';
@@ -63,6 +66,7 @@ angular.module('app', [
   ngAnimate,
   'ngAria',
   'ngMaterial',
+  mdDataTable
 ])
 
 // load the services

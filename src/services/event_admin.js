@@ -13,13 +13,19 @@ export default class EventAdminService {
     });
   }
 
-  loadInviteesForEvent(id) {
+  loadInviteesForEvent(id, size, page) {
     let d = this.$q.defer();
 
-    this.api.all('events').one(id).one('relationships').one('invitees').getList().then((invitees) => {
-      console.log(invitees);
-      this.event_invitees = invitees;
-      d.resolve();
+    let params = {
+      "page[number]": page,
+      "page[size]": size,
+    };
+
+    this.api.all('events').one(id).one('relationships').one(`invitees`)
+    .get(params).then((data) => {
+      console.log(data);
+      this.event_invitees = data.data;
+      d.resolve(data.pagination);
     }, () => {
       console.log("error getting invittes");
       d.reject();

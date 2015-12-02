@@ -1,21 +1,38 @@
 export default class EventDetailsAdminController {
-  constructor(AdminSvc, $stateParams) {
+  constructor(AdminSvc, $stateParams, $q) {
     this.aSvc = AdminSvc;
+    this.$q = $q;
     this.event_id = $stateParams.id;
     this.totalAttending = 0;
     this.showAttending = true;
     this.showNotAttending = true;
 
-    this.aSvc.loadInviteesForEvent(this.event_id).then(() => {
-      this.aSvc.event_invitees.forEach((invitee) => {
-        this.totalAttending += this.numAttendingForInvitee(invitee);
-      });
-      console.log(this.totalAttending);
-    }, () => {
+    this.pagination = {
+      size: 10,
+      page: 1,
+      total: 0,
+    };
 
+    this.paginationchange = this.paginationchange.bind(this);
+    this.paginationchange(this.pagination.page, this.pagination.size);
+  }
+
+  paginationchange(page, size) {
+    let d = this.$q.defer();
+
+    this.aSvc.loadInviteesForEvent(
+      this.event_id,
+      size,
+      page
+    ).then((pInfo) => {
+      d.resolve();
+      this.pagination.size = pInfo.page_size;
+      this.pagination.total = pInfo.total_items;
+    }, () => {
+      d.reject();
     });
 
-    console.log("welcome to event admin");
+    return d.promise;
   }
 
 
@@ -46,5 +63,6 @@ export default class EventDetailsAdminController {
 
 EventDetailsAdminController.$inject = [
   'EventAdminService',
-  '$stateParams'
+  '$stateParams',
+  '$q'
 ];

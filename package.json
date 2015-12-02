@@ -12,6 +12,8 @@
   "dependencies": {
     "angucomplete-alt": "^2.1.0",
     "angular": "^1.4.7",
+    "angular-aria": "^1.4.8",
+    "angular-material-data-table": "^0.8.11",
     "angular-moment": "^0.10.3",
     "angular-ui-router": "^0.2.15",
     "babel-cli": "^6.1.4",

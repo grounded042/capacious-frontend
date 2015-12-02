@@ -1,49 +1,34 @@
-<md-content layout="row" layout-align="center center" class="card-container">
+<md-content layout="column" layout-align="center center" class="card-container">
   <div flex="75" class="card">
     <md-card>
-      <md-card-content>
-        <md-list>
-            <div layout="row">
-              <div flex>
-                <h1>Total Attending: {{edac.totalAttending}}</h1>
-              </div>
-              <div flex>
-                <md-checkbox ng-model="edac.showAttending">
-                  Show Attending
-                </md-checkbox>
-              </div>
-              <div flex>
-                <md-checkbox ng-model="edac.showNotAttending">
-                  Show Not Attending
-                </md-checkbox>
-              </div>
-            </div>
-          <md-list-item
-            class="md-2-line"
-            ng-repeat="invitee in edac.aSvc.event_invitees | filter:edac.filterAttendingNotAttending(edac.showAttending, edac.showNotAttending)"
-          >
-            <div class="md-list-item-text">
-              <div layout="row">
-                <div flex>
-                  <h3>{{invitee.self.first_name}} {{invitee.self.last_name}}</h3>
-                  <h4>{{invitee.self.attending ? "attending" : "not attending"}}</h4>
-                </div>
-                <div flex>
-                  <div ng-if="invitee.self.attending && invitee.friends[0] != undefined && invitee.friends[0].self.attending">
-                    <h3>{{invitee.friends[0].self.first_name}} {{invitee.friends[0].self.last_name}}</h3>
-                    <h4>{{invitee.friends[0].self.attending ? "attending" : "not attending"}}</h4>
-                  </div>
-                </div>
-                <div flex>
-                  <h3 ng-if="invitee.seating_request.length > 0">Seating Requests</h3>
-                  <h4 ng-repeat="req in invitee.seating_request">{{req.first_name}} {{req.last_name}}</h4>
-                </div>
-              </div>
-            </div>
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-        </md-list>
-      </md-card-content>
+      <md-data-table-toolbar>
+        <h2 class="md-title">Total Attending: {{edac.totalAttending}}</h2>
+      </md-data-table-toolbar>
+
+      <md-data-table-container>
+        <table md-data-table class="md-primary" md-progress="deferred">
+          <thead md-order="query.order" md-trigger="onorderchange">
+            <tr>
+              <th name="Invitee"></th>
+              <th name="Attending"></th>
+              <th name="Significant Other"></th>
+              <th name="S/O Attending"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              md-auto-select
+              ng-repeat="invitee in edac.aSvc.event_invitees"
+            >
+              <td>{{invitee.self.first_name}} {{invitee.self.last_name}}</td>
+              <td>{{invitee.self.attending ? "Yes" : "No"}}</td>
+              <td>{{invitee.friends[0].self.first_name}} {{invitee.friends[0].self.last_name}}</td>
+              <td>{{invitee.friends[0].self.attending ? "Yes" : "No"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-data-table-container>
+      <md-data-table-pagination md-limit="edac.pagination.size" md-page="edac.pagination.page" md-total="{{edac.pagination.total}}" md-row-select="[10, 15, 20, 25]" md-trigger="edac.paginationchange"></md-data-table-pagination>
     </md-card>
   </div>
 </md-content>
